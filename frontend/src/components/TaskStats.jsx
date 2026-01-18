@@ -14,36 +14,36 @@ export default function TaskStats({ tasks }) {
     : 0;
 
   return (
-    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
-      <div className="bg-gradient-to-br from-gray-900 to-black p-4 rounded-lg border border-gray-800 shadow-lg">
-        <p className="text-gray-400 text-sm">Total Tasks</p>
-        <p className="text-3xl font-bold text-white">{stats.total}</p>
+    <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div className="bg-white p-5 rounded-lg border border-gray-200 shadow-md hover:shadow-lg transition-all">
+        <p className="text-gray-600 text-sm font-medium mb-1">Total Tasks</p>
+        <p className="text-4xl font-bold text-black">{stats.total}</p>
       </div>
       
-      <div className="bg-gradient-to-br from-gray-900 to-black p-4 rounded-lg border border-gray-600 shadow-lg">
-        <p className="text-gray-400 text-sm">Not Started</p>
-        <p className="text-3xl font-bold text-gray-300">{stats.notStarted}</p>
+      <div className="bg-white p-5 rounded-lg border border-gray-300 shadow-md hover:shadow-lg transition-all">
+        <p className="text-gray-600 text-sm font-medium mb-1">Not Started</p>
+        <p className="text-4xl font-bold text-gray-700">{stats.notStarted}</p>
       </div>
       
-      <div className="bg-gradient-to-br from-blue-900/30 to-black p-4 rounded-lg border border-blue-600 shadow-lg">
-        <p className="text-blue-400 text-sm">In Progress</p>
-        <p className="text-3xl font-bold text-blue-300">{stats.inProgress}</p>
+      <div className="bg-white p-5 rounded-lg border border-gray-400 shadow-md hover:shadow-lg transition-all">
+        <p className="text-gray-600 text-sm font-medium mb-1">In Progress</p>
+        <p className="text-4xl font-bold text-gray-800">{stats.inProgress}</p>
       </div>
       
-      <div className="bg-gradient-to-br from-green-900/30 to-black p-4 rounded-lg border border-green-600 shadow-lg">
-        <p className="text-green-400 text-sm">Completed</p>
-        <p className="text-3xl font-bold text-green-300">{stats.completed}</p>
+      <div className="bg-white p-5 rounded-lg border border-black shadow-md hover:shadow-lg transition-all">
+        <p className="text-gray-600 text-sm font-medium mb-1">Completed</p>
+        <p className="text-4xl font-bold text-black">{stats.completed}</p>
       </div>
       
       {stats.total > 0 && (
-        <div className="col-span-2 md:col-span-4 bg-gradient-to-br from-gray-900 to-black p-4 rounded-lg border border-gray-800 shadow-lg">
-          <div className="flex justify-between items-center mb-2">
-            <p className="text-gray-400 text-sm">Completion Rate</p>
-            <p className="text-white font-bold">{completionRate}%</p>
+        <div className="col-span-2 md:col-span-4 bg-white p-5 rounded-lg border border-gray-200 shadow-md">
+          <div className="flex justify-between items-center mb-3">
+            <p className="text-gray-600 text-sm font-medium">Completion Rate</p>
+            <p className="text-black font-bold text-xl">{completionRate}%</p>
           </div>
-          <div className="w-full bg-gray-800 rounded-full h-3 overflow-hidden">
+          <div className="w-full bg-gray-200 rounded-full h-4 overflow-hidden">
             <div 
-              className="bg-gradient-to-r from-white to-gray-300 h-3 rounded-full transition-all duration-500"
+              className="bg-black h-4 rounded-full transition-all duration-500"
               style={{ width: `${completionRate}%` }}
             ></div>
           </div>

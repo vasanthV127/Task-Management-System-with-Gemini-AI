@@ -34,66 +34,66 @@ export default function Auth({ onLogin }) {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-black via-gray-900 to-black">
-      <div className="bg-gradient-to-br from-gray-900 to-black p-8 rounded-2xl shadow-2xl border border-gray-800 w-full max-w-md backdrop-blur-lg">
+    <div className="min-h-screen flex items-center justify-center p-4">
+      <div className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-md border border-gray-200">
         <div className="text-center mb-8">
-          <div className="inline-block p-3 bg-white rounded-xl mb-4">
-            <Brain className="text-black" size={40} />
+          <div className="inline-block p-4 bg-black rounded-lg mb-4">
+            <Brain className="text-white" size={48} />
           </div>
-          <h1 className="text-3xl font-bold text-white mb-2">
+          <h1 className="text-4xl font-bold text-black mb-2">
             Task Manager AI
           </h1>
-          <p className="text-gray-400">Powered by Gemini • Manage with Intelligence</p>
+          <p className="text-gray-600">Powered by Gemini • Intelligent Task Management</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Username
             </label>
             <input
               type="text"
               value={username}
               onChange={(e) => setUsername(e.target.value)}
-              className="w-full px-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent transition"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition placeholder-gray-500"
               required
-              placeholder="Enter username"
+              placeholder="Enter your username"
             />
           </div>
 
           {!isLogin && (
             <div>
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label className="block text-sm font-semibold text-gray-700 mb-2">
                 Email
               </label>
               <input
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full px-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent transition"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition placeholder-gray-500"
                 required
-                placeholder="Enter email"
+                placeholder="your@email.com"
               />
             </div>
           )}
 
           <div>
-            <label className="block text-sm font-medium text-gray-300 mb-2">
+            <label className="block text-sm font-semibold text-gray-700 mb-2">
               Password
             </label>
             <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="w-full px-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent transition"
+              className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition placeholder-gray-500"
               required
               minLength={6}
-              placeholder="Minimum 6 characters"
+              placeholder="••••••••"
             />
           </div>
 
           {error && (
-            <div className="bg-red-500/10 border border-red-500 text-red-400 px-4 py-3 rounded-lg text-sm">
+            <div className="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded-lg text-sm">
               {error}
             </div>
           )}
@@ -101,10 +101,10 @@ export default function Auth({ onLogin }) {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-white text-black py-3 rounded-lg font-bold hover:bg-gray-200 transition disabled:opacity-50 flex items-center justify-center gap-2 shadow-lg"
+            className="w-full bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition-all disabled:opacity-50 flex items-center justify-center gap-2"
           >
-            {isLogin ? <LogIn size={18} /> : <UserPlus size={18} />}
-            {loading ? 'Please wait...' : isLogin ? 'Login' : 'Register'}
+            {isLogin ? <LogIn size={20} /> : <UserPlus size={20} />}
+            {loading ? 'Please wait...' : isLogin ? 'Sign In' : 'Create Account'}
           </button>
         </form>
 
@@ -114,9 +114,8 @@ export default function Auth({ onLogin }) {
               setIsLogin(!isLogin);
               setError('');
             }}
-            className="text-gray-400 hover:text-white text-sm transition"
-          >
-            {isLogin ? "Don't have an account? Register" : 'Already have an account? Login'}
+            className="text-gray-600 hover:text-black text-sm transition font-medium"
+          >{isLogin ? "Don't have an account? Create one" : 'Already registered? Sign in'}
           </button>
         </div>
       </div>

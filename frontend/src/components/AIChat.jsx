@@ -56,47 +56,49 @@ export default function AIChat({ onTasksChange }) {
   };
 
   return (
-    <div className="bg-gradient-to-br from-gray-900 to-black rounded-lg shadow-2xl flex flex-col h-[500px] border border-gray-800">
-      <div className="bg-gradient-to-r from-white to-gray-200 text-black p-4 rounded-t-lg">
-        <div className="flex items-center gap-2">
-          <Bot size={24} />
+    <div className="bg-white rounded-lg shadow-xl flex flex-col h-[600px] border border-gray-200">
+      <div className="bg-black text-white p-4 rounded-t-lg">
+        <div className="flex items-center gap-3">
+          <div className="p-2 bg-white/10 rounded-lg">
+            <Bot size={24} />
+          </div>
           <div>
-            <h2 className="font-bold">AI Assistant</h2>
-            <p className="text-xs opacity-75">Powered by Gemini</p>
+            <h2 className="font-bold text-lg">AI Assistant</h2>
+            <p className="text-xs text-gray-300">Powered by Gemini</p>
           </div>
         </div>
       </div>
 
-      <div className="flex-1 overflow-y-auto p-4 space-y-3">
+      <div className="flex-1 overflow-y-auto p-4 space-y-4">
         {messages.map((msg, idx) => (
           <div
             key={idx}
-            className={`flex gap-2 ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
+            className={`flex gap-3 ${msg.type === 'user' ? 'justify-end' : 'justify-start'}`}
           >
             {msg.type === 'ai' && (
-              <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center flex-shrink-0">
-                <Bot size={18} className="text-black" />
+              <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center flex-shrink-0">
+                <Bot size={20} className="text-white" />
               </div>
             )}
             
             <div
-              className={`max-w-[80%] rounded-lg px-4 py-2 ${
+              className={`max-w-[80%] rounded-lg px-4 py-3 ${
                 msg.type === 'user'
-                  ? 'bg-white text-black shadow-md'
+                  ? 'bg-black text-white'
                   : msg.success === false
-                  ? 'bg-red-900/30 text-red-300 border border-red-600'
+                  ? 'bg-red-50 text-red-700 border border-red-200'
                   : msg.success === true
-                  ? 'bg-green-900/30 text-green-300 border border-green-600'
-                  : 'bg-gray-800 text-gray-200 border border-gray-700'
+                  ? 'bg-green-50 text-green-700 border border-green-200'
+                  : 'bg-gray-50 text-gray-800 border border-gray-200'
               }`}
             >
-              <p className="text-sm whitespace-pre-line">{msg.text}</p>
+              <p className="text-sm whitespace-pre-line leading-relaxed">{msg.text}</p>
               
               {msg.data?.tasks && (
-                <div className="mt-2 space-y-1">
+                <div className="mt-3 space-y-2">
                   {msg.data.tasks.map(task => (
-                    <div key={task.id} className="text-xs bg-black bg-opacity-50 rounded p-2 border border-gray-700">
-                      <strong>{task.title}</strong> - {task.state}
+                    <div key={task.id} className="text-xs bg-white rounded-lg p-2.5 border border-gray-200">
+                      <strong className="text-black">{task.title}</strong> <span className="text-gray-600">- {task.state}</span>
                     </div>
                   ))}
                 </div>
@@ -104,23 +106,23 @@ export default function AIChat({ onTasksChange }) {
             </div>
 
             {msg.type === 'user' && (
-              <div className="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center flex-shrink-0 border border-gray-700">
-                <User size={18} className="text-white" />
+              <div className="w-9 h-9 rounded-lg bg-gray-200 flex items-center justify-center flex-shrink-0">
+                <User size={20} className="text-gray-700" />
               </div>
             )}
           </div>
         ))}
         
         {loading && (
-          <div className="flex gap-2">
-            <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center">
-              <Bot size={18} className="text-black" />
+          <div className="flex gap-3">
+            <div className="w-9 h-9 rounded-lg bg-black flex items-center justify-center">
+              <Bot size={20} className="text-white" />
             </div>
-            <div className="bg-gray-800 rounded-lg px-4 py-2 border border-gray-700">
-              <div className="flex gap-1">
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
-                <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
+            <div className="bg-gray-50 rounded-lg px-4 py-3 border border-gray-200">
+              <div className="flex gap-1.5">
+                <div className="w-2 h-2 bg-gray-600 rounded-full animate-bounce" style={{ animationDelay: '0ms' }}></div>
+                <div className="w-2 h-2 bg-gray-700 rounded-full animate-bounce" style={{ animationDelay: '150ms' }}></div>
+                <div className="w-2 h-2 bg-black rounded-full animate-bounce" style={{ animationDelay: '300ms' }}></div>
               </div>
             </div>
           </div>
@@ -129,20 +131,20 @@ export default function AIChat({ onTasksChange }) {
         <div ref={messagesEndRef} />
       </div>
 
-      <form onSubmit={handleSubmit} className="border-t border-gray-800 p-4 bg-black">
-        <div className="flex gap-2">
+      <form onSubmit={handleSubmit} className="border-t border-gray-200 p-4 bg-gray-50 rounded-b-lg">
+        <div className="flex gap-3">
           <input
             type="text"
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder="Type a command..."
-            className="flex-1 px-4 py-3 bg-gray-900 border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent placeholder-gray-500"
+            placeholder="Ask me anything..."
+            className="flex-1 px-4 py-3 bg-white border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-black focus:border-transparent placeholder-gray-500"
             disabled={loading}
           />
           <button
             type="submit"
             disabled={loading || !input.trim()}
-            className="bg-white text-black px-6 py-3 rounded-lg hover:bg-gray-200 transition disabled:opacity-50 disabled:cursor-not-allowed font-bold shadow-md"
+            className="bg-black text-white px-6 py-3 rounded-lg hover:bg-gray-800 transition-all disabled:opacity-50 disabled:cursor-not-allowed font-bold"
           >
             <Send size={20} />
           </button>

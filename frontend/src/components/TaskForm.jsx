@@ -20,7 +20,7 @@ export default function TaskForm({ onSubmit }) {
     return (
       <button
         onClick={() => setShowForm(true)}
-        className="w-full bg-white text-black py-3 rounded-lg font-bold hover:bg-gray-200 transition flex items-center justify-center gap-2 shadow-lg"
+        className="w-full bg-black text-white py-3 rounded-lg font-bold hover:bg-gray-800 transition-all flex items-center justify-center gap-2"
       >
         <Plus size={20} />
         Add New Task
@@ -29,14 +29,14 @@ export default function TaskForm({ onSubmit }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-gradient-to-br from-gray-900 to-black rounded-lg shadow-xl p-5 space-y-3 border border-gray-800">
+    <form onSubmit={handleSubmit} className="bg-white rounded-lg shadow-lg p-6 space-y-4 border border-gray-200">
       <div>
         <input
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
           placeholder="Task title *"
-          className="w-full px-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent placeholder-gray-500"
+          className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-black focus:border-transparent placeholder-gray-500"
           required
           autoFocus
         />
@@ -47,15 +47,15 @@ export default function TaskForm({ onSubmit }) {
           value={description}
           onChange={(e) => setDescription(e.target.value)}
           placeholder="Description (optional)"
-          rows="2"
-          className="w-full px-4 py-3 bg-black border border-gray-700 text-white rounded-lg focus:ring-2 focus:ring-white focus:border-transparent resize-none placeholder-gray-500"
+          rows="3"
+          className="w-full px-4 py-3 bg-gray-50 border border-gray-300 text-black rounded-lg focus:ring-2 focus:ring-black focus:border-transparent resize-none placeholder-gray-500"
         />
       </div>
 
-      <div className="flex gap-2">
+      <div className="flex gap-3">
         <button
           type="submit"
-          className="flex-1 bg-white text-black py-2 rounded-lg font-bold hover:bg-gray-200 transition shadow-md"
+          className="flex-1 bg-black text-white py-2.5 rounded-lg font-bold hover:bg-gray-800 transition-all"
         >
           Create Task
         </button>
@@ -66,7 +66,7 @@ export default function TaskForm({ onSubmit }) {
             setTitle('');
             setDescription('');
           }}
-          className="px-4 py-2 border border-gray-700 text-gray-300 rounded-lg hover:bg-gray-800 transition"
+          className="px-5 py-2.5 border border-gray-300 text-black rounded-lg hover:bg-gray-50 transition-all"
         >
           Cancel
         </button>
